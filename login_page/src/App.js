@@ -33,7 +33,7 @@ function App() {
           </label>
         </div>
         <button type="submit" class="btn btn-primary">
-          Submit
+          Submi
         </button>
       </form>
     </div>
