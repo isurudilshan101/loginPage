@@ -1,11 +1,12 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import axios from 'axios';
 
 function App() {
   return (
     <div className="container">
-      <form>
+      <form onSubmit={(e)=>login(e)}>
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input
@@ -38,6 +39,21 @@ function App() {
       </form>
     </div>
   );
+}
+
+function login(e){
+  e.preventDefault();
+  let request={
+    email:document.getElementById('exampleInputEmail1').value,
+    password:document.getElementById('exampleInputPassword1').value
+  }
+  axios.post('http://localhost:3000/login',request)
+  .then(resp=>{
+    alert(resp.data.message);
+  })
+  .catch(err=>{
+    console.log(err);
+  })
 }
 
 export default App;
