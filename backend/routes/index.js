@@ -13,8 +13,8 @@ router.get('/', function(req, res, next) {
   
 });
 
-router.post('/',function(req,res){
-  let result=user.find(user=>user.email==req.body.email);
+router.post('/login',function(req,res){
+  let result=users.find(user=>user.email==req.body.email);
   if(result){
     
       if(result.password==req.body.password){
@@ -22,7 +22,16 @@ router.post('/',function(req,res){
           message:"Successful login"
         })
       }
+      else{
+        res.status(200).send({
+          message:"Password incorrect"
+        })
+      }
     
+  }  else{
+    res.status(200).send({
+      message:"User not found"
+    })
   }
 });
 
